@@ -11,6 +11,7 @@ import CheckoutPage from './Pages/Checkout/Checkout'
 import { auth, createUserProfileDocument } from './Firebase/firebase.utils'
 import { setCurrentUser } from './redux/User/UserActions';
 import { selectCurrentUser } from './redux/User/UserSelectors'
+import { selectCartItems } from './redux/Cart/CartSelectors.js'
 
 
 class App extends React.Component  {
@@ -36,7 +37,7 @@ class App extends React.Component  {
   }
 
   componentWillUnmount() {
-    this.unscribeFromAuth()
+    this.unscribeFromAuth();
   }
 
   render () {
@@ -55,7 +56,9 @@ class App extends React.Component  {
 }
 
 const mapStateToProps = createStructuredSelector ({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  cartItems: selectCartItems
+
 })
 
 const mapDispatchToProps = dispatch => {
