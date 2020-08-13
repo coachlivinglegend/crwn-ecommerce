@@ -15,12 +15,12 @@ import { selectCartItems } from './redux/Cart/CartSelectors.js'
 
 
 class App extends React.Component  {
-  unscribeFromAuth = null;
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
-    this.unscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -37,7 +37,7 @@ class App extends React.Component  {
   }
 
   componentWillUnmount() {
-    this.unscribeFromAuth();
+    this.unsubscribeFromAuth();
   }
 
   render () {
@@ -58,7 +58,6 @@ class App extends React.Component  {
 const mapStateToProps = createStructuredSelector ({
   currentUser: selectCurrentUser,
   cartItems: selectCartItems
-
 })
 
 const mapDispatchToProps = dispatch => {
