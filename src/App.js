@@ -12,6 +12,7 @@ import { auth, createUserProfileDocument } from './Firebase/firebase.utils'
 import { setCurrentUser } from './redux/User/UserActions';
 import { selectCurrentUser } from './redux/User/UserSelectors'
 import { selectCartItems } from './redux/Cart/CartSelectors.js'
+import { selectShopCollectionsForPreview } from './redux/Shop/ShopSelectors'
 
 
 class App extends React.Component  {
@@ -57,7 +58,8 @@ class App extends React.Component  {
 
 const mapStateToProps = createStructuredSelector ({
   currentUser: selectCurrentUser,
-  cartItems: selectCartItems
+  cartItems: selectCartItems,
+  collectionArray: selectShopCollectionsForPreview 
 })
 
 const mapDispatchToProps = dispatch => {

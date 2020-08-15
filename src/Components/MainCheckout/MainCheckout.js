@@ -9,7 +9,6 @@ import StripeCheckoutButton from '../../Components/StripeButton/StripeButton'
 import CustomButton from '../../Components/CustomButton/CustomButton'
 
 const MainCheckout = ({cartItems, total, history, match}) => {
-    console.log(match)
     return (
         <div>
             <div className='checkout-page'>
