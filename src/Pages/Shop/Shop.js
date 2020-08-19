@@ -4,7 +4,9 @@ import { Route } from 'react-router-dom'
 // import { createStructuredSelector } from 'reselect'
 // import { selectIsCollectionsLoaded } from '../../redux/Shop/ShopSelectors'
 // import { firestore, convertCollectionsSnapshotToMap } from '../../Firebase/firebase.utils'
-import { fetchCollectionsStartAsync } from '../../redux/Shop/ShopActions'
+import { fetchCollectionsStart } from '../../redux/Shop/ShopActions'
+//commented this out when we wanted to start saga.
+// import { fetchCollectionsStartAsync } from '../../redux/Shop/ShopActions'
 import CollectionsOverviewContainer from '../../Components/CollectionsOverview/CollectionsOverviewContainer';
 import CollectionPageContainer from '../Collection/CollectionContainer';
 // import WithSpinner from '../../Components/withSpanner/withSpanner'
@@ -37,8 +39,8 @@ class ShopPage extends React.Component {
     // }
     
 componentDidMount() {
-    const {fetchCollectionsStartAsync} = this.props;
-    fetchCollectionsStartAsync();
+    const {fetchCollectionsStart} = this.props;
+    fetchCollectionsStart();
 }
 
     render () {
@@ -66,7 +68,7 @@ componentDidMount() {
 // })
 
 const mapDispatchToProps = dispatch => ({
-    fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync())
+    fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
 })
 
 export default connect(null, mapDispatchToProps)(ShopPage)

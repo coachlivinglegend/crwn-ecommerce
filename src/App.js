@@ -8,37 +8,36 @@ import ShopPage from './Pages/Shop/Shop'
 import Header from './Components/Header/Header'
 import SignUpAndSignIn from './Pages/SignInAndUp/SignInAndUp'
 import CheckoutPage from './Pages/Checkout/Checkout'
-import { auth, createUserProfileDocument } from './Firebase/firebase.utils'
-import { setCurrentUser } from './redux/User/UserActions';
+// import { auth, createUserProfileDocument } from './Firebase/firebase.utils'
+// import { setCurrentUser } from './redux/User/UserActions';
 import { selectCurrentUser } from './redux/User/UserSelectors'
-import { selectCartItems } from './redux/Cart/CartSelectors.js'
-import { selectShopCollectionsForPreview } from './redux/Shop/ShopSelectors'
+// import { selectCartItems } from './redux/Cart/CartSelectors.js'
+// import { selectShopCollectionsForPreview } from './redux/Shop/ShopSelectors'
 
 
 class App extends React.Component  {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
 
-        userRef.onSnapshot(snapShot => {
-          setCurrentUser({
-              id: snapShot.id,
-              ...snapShot.data()
-          })
-        })
-      } else {
-        setCurrentUser(userAuth)
-      }
-    })
+    //     userRef.onSnapshot(snapShot => {
+    //       setCurrentUser({
+    //           id: snapShot.id,
+    //           ...snapShot.data()
+    //       })
+    //     })
+    //   } else {
+    //     setCurrentUser(userAuth)
+    //   }
+    // })
   }
 
   componentWillUnmount() {
-    this.unsubscribeFromAuth();
+    // this.unsubscribeFromAuth();
   }
 
   render () {
@@ -58,13 +57,11 @@ class App extends React.Component  {
 
 const mapStateToProps = createStructuredSelector ({
   currentUser: selectCurrentUser,
-  cartItems: selectCartItems,
-  collectionArray: selectShopCollectionsForPreview 
 })
 
-const mapDispatchToProps = dispatch => {
-  return {
-    setCurrentUser: user => dispatch(setCurrentUser(user))
-  }
-}
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     setCurrentUser: user => dispatch(setCurrentUser(user))
+//   }
+// }
+export default connect(mapStateToProps, null)(App);
