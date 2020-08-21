@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import CustomButton from '../CustomButton/CustomButton';
 
@@ -8,7 +9,35 @@ const StripeCheckoutButton = ({ price }) => {
 
     const onToken = token => {
         console.log(token);
-        alert('Payment Successful')
+        fetch('http://localhost:5000/payment', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                amount: priceForStripe,
+                token
+            })
+        }).then(response => {
+            alert('Payment Successful')
+            console.log(response)
+        }).catch(error => {
+            console.log('Payment error:', JSON.parse(error));
+            alert("There was an issue with your payment. 419.")
+        })
+
+        // axios({
+        //     url: 'payment',
+        //     method: 'post',
+        //     data: {
+        //         amount: priceForStripe,
+        //         token
+        //     }
+        // }).then(response => {
+        //     alert('Payment Successful')
+        //     console.log(response)
+        // }).catch(error => {
+        //     console.log('Payment error:', JSON.parse(error));
+        //     alert("There was an issue with your payment. 419.")
+        // })
     }
 
     return (
