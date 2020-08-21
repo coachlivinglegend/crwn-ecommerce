@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 // import { createStructuredSelector } from 'reselect'
@@ -15,7 +15,7 @@ import CollectionPageContainer from '../Collection/CollectionContainer';
 
 // const CollectionOverViewWithSpinner = WithSpinner(CollectionOverview);
 // const CollectionPageWithSpinner = WithSpinner(CollectionPage);
-class ShopPage extends React.Component {
+const ShopPage = ({ fetchCollectionsStart, match }) => {
     // state = {
     //     loading: true
     // }
@@ -37,30 +37,25 @@ class ShopPage extends React.Component {
     //     // .then(response => response.json())
     //     // .then(collections => console.log(collections))
     // }
-    
-componentDidMount() {
-    const {fetchCollectionsStart} = this.props;
-    fetchCollectionsStart();
-}
+    useEffect( () => {
+        fetchCollectionsStart()
+    }, [fetchCollectionsStart])
 
-    render () {
-        const { match } = this.props
-        return (
-            <div className = 'shop-page'>
-                <Route 
-                    exact 
-                    path={`${match.path}`} 
-                    component={CollectionsOverviewContainer}
-                    // render={(props) => <CollectionOverViewWithSpinner isLoading={!isCollectionsLoaded} {...props}/>}               
-                />
-                <Route 
-                    path={`${match.path}/:collectionId`} 
-                    component={CollectionPageContainer}
-                    // render={(props) => <CollectionPageWithSpinner isLoading={!isCollectionsLoaded} {...props}/>} 
-                />
-            </div>
-        )
-    }
+    return (
+        <div className = 'shop-page'>
+            <Route 
+                exact 
+                path={`${match.path}`} 
+                component={CollectionsOverviewContainer}
+                // render={(props) => <CollectionOverViewWithSpinner isLoading={!isCollectionsLoaded} {...props}/>}               
+            />
+            <Route 
+                path={`${match.path}/:collectionId`} 
+                component={CollectionPageContainer}
+                // render={(props) => <CollectionPageWithSpinner isLoading={!isCollectionsLoaded} {...props}/>} 
+            />
+        </div>
+    )
 }
 // const mapStateToProps = createStructuredSelector({
 //     isCollectionFetching: selectIsCollectionFetching,
