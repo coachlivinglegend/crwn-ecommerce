@@ -44,8 +44,11 @@ const MainCheckout = ({cartItems, total, history, match}) => {
                         <br/>
                         4242 4242 4242 4242 - Exp: 01/21 - CVV: 123
                     </div>
-                    <StripeCheckoutButton price={total} />
-                    <CustomButton onClick={() => {history.push(`${match.path}/paystack`)}}>PAY WITH PAYSTACK</CustomButton>
+                    <div style={{display: "flex", flexDirection: "column" }}>
+                        <StripeCheckoutButton price={total} />
+                        <CustomButton style={{marginTop: 20}} onClick={() => {history.push(`${match.path}/paystack`)}}>PAY WITH PAYSTACK</CustomButton>
+                    </div>
+
             </div>
         </div>
     )

@@ -1,3 +1,46 @@
+@media screen and (max-width: 420px) {
+
+  .checkout{
+    width: 320px !important;
+    min-width: 320px !important;
+  }
+
+  .mastercard-icon {
+    font-size: 30px !important;
+  }
+  
+  .smart-card {
+    width: 75%;
+    height: 180px;
+    position: absolute;
+    right: 22% !important;
+    background: #8d8f97;
+    border-radius: 5px;
+
+    .card-details {
+      width: 80% !important;
+      height: 90%;
+      margin: 7.5px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      & input {
+        background-color: #8d8f97;
+        color: #fff;
+        font-size: 20px;
+        margin-top: -1%;
+        outline: none;
+        border: none;
+      }
+
+      & input::placeholder {
+        color: #ffff;
+        font-size: 12px;
+      }
+    }
+  }
+}
 
 .container {
   background-color: #e5e6ea;
@@ -101,7 +144,8 @@
           outline: none;
           margin: 3.5px auto;
           color: white;
-          padding-left: 0;
+          padding-left: 4px;
+          height: 30px;
 
           &::placeholder {
             color: white;
@@ -154,8 +198,11 @@
       background-color: #2d7aee;
       margin-top: 40px;
       width: 100%;
+      height: 30px;
       border-radius: 0;
       color: white;
+      border-radius: 3px;
+      border: 0
     }
   }
 }
@@ -241,7 +288,7 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1500px) {
   .container {
     .wrapper {
       flex-direction: column;

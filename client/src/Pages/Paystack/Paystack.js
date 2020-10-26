@@ -51,14 +51,14 @@ const Paystack = (props) => {
                   </div>
                 </div>
                 <div className='mastercard'>
-                  <i class='mastercard-icon'></i>
+                  <i className='mastercard-icon'></i>
                   <span>mastercard</span>
                 </div>
               </div>
             </div>
             <div>
               <form>
-                <label className='card-type-text' for='name'>
+                <label className='card-type-text' htmlFor='name'>
                   Name on Card
                 </label>
                 <input
@@ -71,7 +71,7 @@ const Paystack = (props) => {
                   required
                 />
 
-                <label className='card-type-text' for='ccn'>
+                <label className='card-type-text' htmlFor='ccn'>
                   Phone Number:
                 </label>
                 <input
@@ -80,8 +80,8 @@ const Paystack = (props) => {
                   value={phone}
                   onChange={e => setPhoneNumber(e.target.value)}
                   type='tel'
-                  inputmode='numeric'
-                  maxlength='11'
+                  inputMode='numeric'
+                  maxLength='11'
                   placeholder='080F OLD ABLES'
                 ></input>
 
@@ -97,11 +97,8 @@ const Paystack = (props) => {
                   type='email'
                   placeholder='buycakes@foldables.com'
                 ></input>
-                
-                <input className='checkout-btn' value='Check Out' type='submit' />
               </form>
-            <PaystackButton {...componentProps} />
-
+            <PaystackButton className='checkout-btn' {...componentProps} />
             </div>
           </div>
         </div>

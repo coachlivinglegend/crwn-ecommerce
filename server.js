@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser')
 const path = require('path')
+const cloudinary = require('cloudinary').v2;
 
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
@@ -39,6 +40,4 @@ app.post('/payment', (req, res) => {
 
 app.listen(port, error => {
     if (error) throw error;
-
-    console.log('Server running on port' + port)
 })

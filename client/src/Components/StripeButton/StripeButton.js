@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
 import CustomButton from '../CustomButton/CustomButton';
 
@@ -8,8 +8,7 @@ const StripeCheckoutButton = ({ price }) => {
     const publishableKey = 'pk_test_51HFgyqAJTEZ7zpCBUvPX7wiJQbFZnMBBp0ciY0mzrKbhOCuhill9l1tce5FH9Uga9etV7DKYX1uciVLAqHFndnxd00AOvrYwDP'
 
     const onToken = token => {
-        console.log(token);
-        fetch('http://localhost:5000/payment', {
+        fetch('https://crwn-cloth-elive.herokuapp.com/payment', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -18,9 +17,7 @@ const StripeCheckoutButton = ({ price }) => {
             })
         }).then(response => {
             alert('Payment Successful')
-            console.log(response)
         }).catch(error => {
-            console.log('Payment error:', JSON.parse(error));
             alert("There was an issue with your payment. 419.")
         })
 
@@ -53,7 +50,7 @@ const StripeCheckoutButton = ({ price }) => {
             token={onToken}
             stripeKey={publishableKey}
         >
-            <CustomButton stripe >PAY NOW</CustomButton>
+            <CustomButton stripe >PAY WITH STRIPE</CustomButton>
         </StripeCheckout>
     )
 }
